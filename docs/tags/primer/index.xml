@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Primer on Bogota Computer Science Study Group notes</title>
-    <link>http://localhost:1313/tags/primer/</link>
+    <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/primer/</link>
     <description>Recent content in Primer on Bogota Computer Science Study Group notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>(c) Made with &lt;3 in Bogota.</copyright>
-    <lastBuildDate>Sun, 17 Mar 2024 13:29:24 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/primer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Apr 2020 02:01:58 +0530</lastBuildDate>
+    <atom:link href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/primer/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hanoi Towers</title>
-      <link>http://localhost:1313/posts/hanoi-towers/</link>
-      <pubDate>Sun, 17 Mar 2024 13:29:24 -0500</pubDate>
-      <guid>http://localhost:1313/posts/hanoi-towers/</guid>
-      <description>Hanoi Towers The code starts with a helper function getAlt(src, dest) that returns the index of the peg that is not the source or destination peg:&#xA;def getAlt(src, dest): if (src == 0 and dest == 1) or (src == 1 and dest == 0): return 2 elif (src == 0 and dest == 2) or (src == 2 and dest == 0): return 1 elif (src == 1 and dest == 2) or (src == 2 and dest == 1): return 0 The main recursive function move(pieces, target_disk, source) handles the actual movement of the disks.</description>
+      <title>Primer: When You Have Too Much to Do</title>
+      <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/post-1/</link>
+      <pubDate>Wed, 01 Apr 2020 02:01:58 +0530</pubDate>
+      <guid>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/post-1/</guid>
+      <description>You have a to-do list that scrolls on for days. You are managing multiple projects, getting lots of email and messages on different messaging systems, managing finances and personal health habits and so much more.&#xA;It all keeps piling up, and it can feel overwhelming.&#xA;How do you keep up with it all? How do you find focus and peace and get stuff accomplished when you have too much on your plate?</description>
     </item>
   </channel>
 </rss>
