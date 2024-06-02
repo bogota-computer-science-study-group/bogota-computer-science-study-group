@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Databases on Bogota Computer Science Study Group notes</title>
+    <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/databases/</link>
+    <description>Recent content in Databases on Bogota Computer Science Study Group notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>(c) Made with &lt;3 in Bogota.</copyright>
+    <lastBuildDate>Sun, 17 Mar 2024 13:29:24 -0500</lastBuildDate>
+    <atom:link href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/databases/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>November 2023 Programming Resources</title>
+      <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/november-2023/</link>
+      <pubDate>Sun, 17 Mar 2024 13:29:24 -0500</pubDate>
+      <guid>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/november-2023/</guid>
+      <description>November 2023 https://www.linkedin.com/posts/reza-maraghechi-b46ba564_python-handwrite-activity-7134648536863817728-ZYhn?utm_source=share&amp;amp;utm_medium=member_desktop&#xA;https://www.htmhell.dev/adventcalendar/2023/2/&#xA;https://github.com/karpathy/minGPT&#xA;https://html-lang.org/html.js&#xA;https://tontinton.com/posts/database-fundementals/&#xA;https://youtu.be/WGorCjLCdqM&#xA;https://thenewstack.io/donald-knuths-2023-christmas-lecture-make-the-cells-dance/&#xA;https://www.swi-prolog.org/download/publications/tabling-book.pdf</description>
+    </item>
+  </channel>
+</rss>

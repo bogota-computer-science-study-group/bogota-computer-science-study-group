@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Queue on Bogota Computer Science Study Group notes</title>
+    <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/queue/</link>
+    <description>Recent content in Queue on Bogota Computer Science Study Group notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>(c) Made with &lt;3 in Bogota.</copyright>
+    <lastBuildDate>Sat, 01 Jun 2024 16:58:21 -0500</lastBuildDate>
+    <atom:link href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/queue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Efficient Queue Implementation Using Stacks in Python</title>
+      <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/make-a-queue-using-two-stacks/</link>
+      <pubDate>Sat, 01 Jun 2024 16:58:21 -0500</pubDate>
+      <guid>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/make-a-queue-using-two-stacks/</guid>
+      <description>This post explains how to efficiently implement a queue using two stacks in Python. The queue supports basic operations like enqueue (push), dequeue (pop), and peek. We&amp;rsquo;ll explore the algorithm behind this implementation and provide a complete Python code listing.&#xA;Introduction A queue is a linear data structure that follows the First-In-First-Out (FIFO) principle. In contrast, a stack follows the Last-In-First-Out (LIFO) principle. To implement a queue using stacks efficiently, we need to use two stacks to simulate the FIFO behavior of a queue while achieving O(1) time complexity for most operations.</description>
+    </item>
+  </channel>
+</rss>

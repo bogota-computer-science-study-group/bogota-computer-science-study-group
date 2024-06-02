@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Llama-Models on Bogota Computer Science Study Group notes</title>
+    <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/llama-models/</link>
+    <description>Recent content in Llama-Models on Bogota Computer Science Study Group notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>(c) Made with &lt;3 in Bogota.</copyright>
+    <lastBuildDate>Sun, 17 Mar 2024 13:29:24 -0500</lastBuildDate>
+    <atom:link href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/llama-models/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>September 2023 Programming Resources</title>
+      <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/september-2023/</link>
+      <pubDate>Sun, 17 Mar 2024 13:29:24 -0500</pubDate>
+      <guid>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/september-2023/</guid>
+      <description>September 2023 https://www.reddit.com/r/programming/comments/16yyab9/im_excited_to_share_elara_a_side_project_that_ive/&#xA;http://lambda-the-ultimate.org/node/5648&#xA;https://www.youtube.com/watch?v=KyYsVeYzbik&#xA;https://youtu.be/SAaIZ0hVLf0?feature=shared&#xA;Llama2 https://www.youtube.com/watch?v=YcxwNSiz9KE&amp;amp;ab_channel=FelipeValdes</description>
+    </item>
+  </channel>
+</rss>

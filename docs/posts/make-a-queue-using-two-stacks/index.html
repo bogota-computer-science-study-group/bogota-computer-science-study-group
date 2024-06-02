@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Efficient Queue Implementation Using Stacks in Python - Bogota Computer Science Study Group notes</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="This post explores how to implement an efficient queue using two stacks in Python, detailing the underlying algorithm and providing a complete code implementation." />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Efficient Queue Implementation Using Stacks in Python" />
+<meta property="og:description" content="This post explores how to implement an efficient queue using two stacks in Python, detailing the underlying algorithm and providing a complete code implementation." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/make-a-queue-using-two-stacks/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-06-01T16:58:21-05:00" />
+<meta property="article:modified_time" content="2024-06-01T16:58:21-05:00" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Efficient Queue Implementation Using Stacks in Python"/>
+<meta name="twitter:description" content="This post explores how to implement an efficient queue using two stacks in Python, detailing the underlying algorithm and providing a complete code implementation."/>
+<script src="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/js/feather.min.js"></script>
+	
+	
+        <link href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css" media="(prefers-color-scheme: dark)"  />
+	
+
+	
+	
+
+	
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/">Bogota Computer Science Study Group notes</a>
+	</div>
+	<nav>
+		
+		<a href="/bogota-computer-science-study-group/">Home</a>
+		
+		<a href="/bogota-computer-science-study-group/posts">All posts</a>
+		
+		<a href="/bogota-computer-science-study-group/about">About</a>
+		
+		<a href="/bogota-computer-science-study-group/tags">Tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Efficient Queue Implementation Using Stacks in Python</h1>
+			<div class="meta">Posted on Jun 1, 2024</div>
+		</div>
+		
+
+		<section class="body">
+			<p>This post explains how to efficiently implement a queue using two stacks in Python. The queue supports basic operations like enqueue (push), dequeue (pop), and peek. We&rsquo;ll explore the algorithm behind this implementation and provide a complete Python code listing.</p>
+<h2 id="introduction">Introduction</h2>
+<p>A queue is a linear data structure that follows the First-In-First-Out (FIFO) principle. In contrast, a stack follows the Last-In-First-Out (LIFO) principle. To implement a queue using stacks efficiently, we need to use two stacks to simulate the FIFO behavior of a queue while achieving O(1) time complexity for most operations.</p>
+<h2 id="the-algorithm">The Algorithm</h2>
+<p>The core idea behind implementing a queue using two stacks is to use one stack (<code>s1</code>) for enqueue operations and another stack (<code>s2</code>) for dequeue operations. We transfer elements between the stacks only when necessary, minimizing the number of operations and thus improving efficiency.</p>
+<h3 id="helper-class-stack">Helper Class: Stack</h3>
+<p>First, we define a simple stack class with <code>push</code>, <code>pop</code>, and <code>is_empty</code> methods:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stack</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>internal <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">push</span>(self, x):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>internal<span style="color:#f92672">.</span>append(x)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pop</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>internal<span style="color:#f92672">.</span>pop()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_empty</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>internal) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><h3 id="main-class-myqueue">Main Class: MyQueue</h3>
+<p>The <code>MyQueue</code> class uses two instances of the <code>Stack</code> class to implement the queue operations and an additional method <code>_transfer</code> to facilitate the transfer of elements between the stacks.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyQueue</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s1 <span style="color:#f92672">=</span> Stack()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s2 <span style="color:#f92672">=</span> Stack()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 1 is for pushing, 2 is for popping</span>
+</span></span></code></pre></div><h4 id="transfer-helper-method">Transfer Helper Method</h4>
+<p>The <code>_transfer</code> method transfers elements from one stack to another:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_transfer</span>(self, source, destination):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> source<span style="color:#f92672">.</span>is_empty():
+</span></span><span style="display:flex;"><span>        destination<span style="color:#f92672">.</span>push(source<span style="color:#f92672">.</span>pop())
+</span></span></code></pre></div><h4 id="enqueue-operation">Enqueue Operation</h4>
+<p>The <code>push</code> method adds an element to the queue by pushing it onto <code>s1</code>. If the mode is not set to pushing, it first transfers elements back to <code>s1</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">push</span>(self, x: int) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_transfer(self<span style="color:#f92672">.</span>s2, self<span style="color:#f92672">.</span>s1)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>s1<span style="color:#f92672">.</span>push(x)
+</span></span></code></pre></div><h4 id="dequeue-operation">Dequeue Operation</h4>
+<p>The <code>pop</code> method removes an element from the queue. If the mode is not set to popping, it first transfers elements to <code>s2</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pop</span>(self) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_transfer(self<span style="color:#f92672">.</span>s1, self<span style="color:#f92672">.</span>s2)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    resulting_element <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>s2<span style="color:#f92672">.</span>pop()        
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resulting_element
+</span></span></code></pre></div><h4 id="peek-operation">Peek Operation</h4>
+<p>The <code>peek</code> method returns the front element of the queue without removing it. If the mode is not set to popping, it first transfers elements to <code>s2</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">peek</span>(self) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_transfer(self<span style="color:#f92672">.</span>s1, self<span style="color:#f92672">.</span>s2)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    resulting_element <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>s2<span style="color:#f92672">.</span>pop()  
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>s2<span style="color:#f92672">.</span>push(resulting_element)  <span style="color:#75715e"># Push back in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resulting_element
+</span></span></code></pre></div><h4 id="empty-check">Empty Check</h4>
+<p>The <code>empty</code> method checks if the queue is empty by checking if the current active stack (<code>s1</code> or <code>s2</code>) is empty:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">empty</span>(self) <span style="color:#f92672">-&gt;</span> bool:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>s1<span style="color:#f92672">.</span>is_empty()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>s2<span style="color:#f92672">.</span>is_empty()
+</span></span></code></pre></div><h2 id="full-code-listing">Full Code Listing</h2>
+<p>Here is the complete code for the efficient queue implementation using two stacks:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stack</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>internal <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">push</span>(self, x):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>internal<span style="color:#f92672">.</span>append(x)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pop</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>internal<span style="color:#f92672">.</span>pop()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_empty</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>internal) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyQueue</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s1 <span style="color:#f92672">=</span> Stack()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s2 <span style="color:#f92672">=</span> Stack()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 1 is for pushing, 2 is for popping</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_transfer</span>(self, source, destination):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> source<span style="color:#f92672">.</span>is_empty():
+</span></span><span style="display:flex;"><span>            destination<span style="color:#f92672">.</span>push(source<span style="color:#f92672">.</span>pop())
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">push</span>(self, x: int) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_transfer(self<span style="color:#f92672">.</span>s2, self<span style="color:#f92672">.</span>s1)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s1<span style="color:#f92672">.</span>push(x)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pop</span>(self) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_transfer(self<span style="color:#f92672">.</span>s1, self<span style="color:#f92672">.</span>s2)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        resulting_element <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>s2<span style="color:#f92672">.</span>pop()        
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> resulting_element
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">peek</span>(self) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_transfer(self<span style="color:#f92672">.</span>s1, self<span style="color:#f92672">.</span>s2)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        resulting_element <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>s2<span style="color:#f92672">.</span>pop()  
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s2<span style="color:#f92672">.</span>push(resulting_element)  <span style="color:#75715e"># Push back in</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> resulting_element
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">empty</span>(self) <span style="color:#f92672">-&gt;</span> bool:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>s1<span style="color:#f92672">.</span>is_empty()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>mode <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>s2<span style="color:#f92672">.</span>is_empty()
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>This implementation of a queue using two stacks effectively demonstrates how we can utilize stacks to simulate the behavior of a queue while maintaining O(1) time complexity for most operations. By leveraging the LIFO property of stacks and strategically transferring elements only when necessary, we achieve the FIFO property required by queues. This approach highlights the versatility and power of basic data structures in solving complex problems efficiently.</p>
+<p>Happy coding!</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/queue">queue</a></li>
+					
+					<li><a href="/tags/python">python</a></li>
+					
+					<li><a href="/tags/data-structures">data structures</a></li>
+					
+					<li><a href="/tags/algorithms">algorithms</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/dataf3l/compsci" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://twitter.com/bogcompsci" rel="me" title="Twitter"><i data-feather="twitter"></i></a>
+    <a class="border"></a><a class="soc" href="https://gitlab.com/athul/" rel="me" title="GitLab"><i data-feather="gitlab"></i></a>
+    <a class="border"></a></div>
+  
+  <div class="footer-info">
+    2024  (c) Made with &lt;3 in Bogota. |  (c) 2024
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

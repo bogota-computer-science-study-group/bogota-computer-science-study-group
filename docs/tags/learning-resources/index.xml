@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learning-Resources on Bogota Computer Science Study Group notes</title>
+    <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/learning-resources/</link>
+    <description>Recent content in Learning-Resources on Bogota Computer Science Study Group notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>(c) Made with &lt;3 in Bogota.</copyright>
+    <lastBuildDate>Sun, 17 Mar 2024 13:29:24 -0500</lastBuildDate>
+    <atom:link href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/learning-resources/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>March 2024 Programming Learning Resources</title>
+      <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/march-2024/</link>
+      <pubDate>Sun, 17 Mar 2024 13:29:24 -0500</pubDate>
+      <guid>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/march-2024/</guid>
+      <description>March 2024 VISUALGO&#xA;https://visualgo.net/en&#xA;HackerRank&#xA;https://www.hackerrank.com/&#xA;Python Tutor&#xA;https://pythontutor.com/&#xA;Hanoi&#xA;https://www.hackerrank.com/challenges/gena/problem)</description>
+    </item>
+  </channel>
+</rss>

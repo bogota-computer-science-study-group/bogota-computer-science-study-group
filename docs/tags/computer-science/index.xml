@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer-Science on Bogota Computer Science Study Group notes</title>
+    <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/computer-science/</link>
+    <description>Recent content in Computer-Science on Bogota Computer Science Study Group notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>(c) Made with &lt;3 in Bogota.</copyright>
+    <lastBuildDate>Sun, 17 Mar 2024 13:29:24 -0500</lastBuildDate>
+    <atom:link href="https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/tags/computer-science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>April 2023 Programming Resources</title>
+      <link>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/april-2023/</link>
+      <pubDate>Sun, 17 Mar 2024 13:29:24 -0500</pubDate>
+      <guid>https://bogota-computer-science-study-group.github.io/bogota-computer-science-study-group/posts/april-2023/</guid>
+      <description>April 2023 Programming Resources A collection of programming resources from April 2023, including blog posts, tutorials, articles, and videos on various topics related to computer science and software development.&#xA;http://lambda-the-ultimate.org/node/5663&#xA;https://www.freecodecamp.org/news/free-courses-top-cs-universities/&#xA;https://twitter.com/amasad/status/1651019556423598081&#xA;https://arxiv.org/ftp/arxiv/papers/2201/2201.00650.pdf&#xA;https://www.instagram.com/reel/CsY6T3hthCG/?igshid=MTc4MmM1YmI2Ng==&#xA;https://gist.github.com/antirez/6ca04dd191bdb82aad9fb241013e88a8&#xA;https://www.linkedin.com/posts/a-banks_photoshop-is-finished-imagine-being-able-ugcPost-7065309179934072832-wG6u?utm_source=share&amp;amp;utm_medium=member_android&#xA;https://www.linkedin.com/posts/michael-mike-erlihson-phd-8208616_machine-and-deep-learning-lecture-notes-c229-activity-7066406055580172288-qK5Y&#xA;https://compilers.iecc.com/crenshaw/tutorfinal.pdf&#xA;https://www.instagram.com/reel/CryhGOSOqpT/?igshid=MTc4MmM1YmI2Ng==</description>
+    </item>
+  </channel>
+</rss>
